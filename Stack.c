@@ -3,7 +3,7 @@
 void initStack(struct Stack *arg, int maxSize, int elemSize)
 {
     /* should check whether returns NULL */
-    arg->base = malloc(maxSize);
+    arg->base = malloc(maxSize*elemSize);
     arg->top = 0;
     arg->maxSize = maxSize;
     arg->elemSize = elemSize;
