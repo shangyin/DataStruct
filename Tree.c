@@ -42,3 +42,35 @@ void initBinaryTree(struct TreeNode *root, void **value, int num)
 	destroyQueue(tQueue);
 	
 }
+
+
+/* sub process for preOrderTree */
+void traversal(struct TreeNode* root, int* tmp, int* count, int flag) {
+	if (!root) {
+		return;
+	}
+	else {
+		if (flag == PRE) {
+			tmp[(*count)++] = root->val;
+		}
+		preOrder(root->left, tmp, count, flag);
+		if (flag == IN) {
+			tmp[(*count)++] = root->val;
+		}
+		preOrder(root->right, tmp, count, flag);
+		if (flag == POST) {
+			tmp[(*count)++] = root->val;
+		}
+	}
+}
+
+/* return an array for the result ordering */
+int* traversalTree(struct TreeNode * root, int flag) {
+	int tmp[4096] = { 0 };
+	int count = 0;
+	traversal(root, tmp, &count, flag);
+	int* ret = (int*)malloc((count + 1)*sizeof(int));
+	ret[0] = count;
+	memcpy(ret + 1, tmp, sizeof(int)*count);
+	return ret;
+}
