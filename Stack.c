@@ -1,12 +1,20 @@
+/********************************************/
+/*		Xu XuTao	2016,2,29				*/
+/********************************************/
+
+/*	
+ *	the stack only store the pointer of elements.
+ *	so, should NOT use the elements from the stack which has been free already.
+ */
+
 #include "Stack.h"
 
-void initStack(struct Stack *arg, int maxSize, int elemSize)
+void initStack(struct Stack *arg, int maxSize)
 {
     /* should check whether returns NULL */
-    arg->base = malloc(maxSize*elemSize);
+    arg->base = malloc(maxSize*sizeof(void*));
     arg->top = 0;
     arg->maxSize = maxSize;
-    arg->elemSize = elemSize;
 }
 
 void pushStack(struct Stack *arg, void* element)
@@ -16,8 +24,7 @@ void pushStack(struct Stack *arg, void* element)
         fprintf(stderr, "use full stack\n");
         return;
     }
-    memcpy((arg->base)+(arg->top*arg->elemSize), element, arg->elemSize);
-    arg->top++;
+	(arg->base)[arg->top++] = element;
 }
 
 void* popStack(struct Stack *arg)
@@ -28,12 +35,12 @@ void* popStack(struct Stack *arg)
         return NULL;
     }
     arg->top -= 1;
-    return (arg->base) + (arg->top * arg->elemSize);
+	return (arg->base)[arg->top];
 }
 
 void* peekStack(struct Stack *arg)
 {
-    return (arg->base) + ((arg->top-1) * arg->elemSize);
+	return (arg->base)[arg->top - 1];
 }
 
 void DestroyStack(struct Stack *arg)

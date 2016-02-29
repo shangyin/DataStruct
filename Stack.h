@@ -4,14 +4,13 @@
 
 struct Stack
 {
-    void *base;
+    void **base;
     int top;
     int maxSize;
-    int elemSize;
 };
 
 
-void initStack(struct Stack *arg, int maxSize, int elemSize);
+void initStack(struct Stack *arg, int maxSize);
 void pushStack(struct Stack *arg, void* element);
 void* popStack(struct Stack *arg);
 void* peekStack(struct Stack *arg);

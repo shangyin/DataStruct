@@ -5,9 +5,8 @@ void initBinaryTree(struct TreeNode *root, void **value, int num)
 	struct Queue tQueue;
 	struct TreeNode **ret;
 	int count = 0;
-	int pSize = sizeof(void*);
 	
-	initQueue(&tQueue, num, sizeof(void*));
+	initQueue(&tQueue, num);
 	inQueue(&tQueue, &root);
 	while (!isEmptyQueue(&tQueue))
 	{
@@ -38,30 +37,28 @@ static void traversal(struct TreeNode* root, void** tmp, int* count, int flag) {
 	}
 	else {
 		if (flag == PRE) {
-			tmp[*count] = root->value;
-            *count += 1;
+			tmp[(*count)++] = root->value;
 		}
 		traversal(root->left, tmp, count, flag);
 		if (flag == IN) {
-			tmp[*count] = root->value;
-            *count += 1;
+			tmp[(*count)++] = root->value;
 		}
 		traversal(root->right, tmp, count, flag);
 		if (flag == POST) {
-			tmp[*count] = root->value;
-            *count += 1;
+			tmp[(*count)++] = root->value;
 		}
 	}
 }
 
-/* return an array for the result ordering */
+/* return an array for the result */
 void** traversalTree(struct TreeNode * root, int flag) {
 	void *tmp[4096] = { 0 };
 	int count = 0;
+	void **ret;
+
 	traversal(root, tmp, &count, flag);
-	void **ret = (void**)malloc((count + 1)*sizeof(void*));
-    memset(ret, 0, sizeof(void*)*(count+1));
-	*(int*)(ret[0]) = count;
+	ret = (void**)malloc((count + 1)*sizeof(void*));
+	ret[0] = count;			/* NOTE: works in IA-32 */
 	memcpy(ret+1, tmp, sizeof(void*)*count);
 	return ret;
 }

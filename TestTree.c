@@ -5,15 +5,14 @@ int main(void)
 {
     struct TreeNode tmp;
     
-    int a = 1;
-    int b = 2;
-    int c = 3;
-    int d = 4;
+    int a = 100;
+    int b = 4;
+    int c = 5;
     int i;
-    int *array[4] = {&a, &b, &c, &d}; 
-    initBinaryTree(&tmp, (void**)array, 4);
+    int *array[3] = {&a, &b, &c}; 
+    initBinaryTree(&tmp, (void**)array, 3);
     int **ret = (int**)traversalTree(&tmp, PRE); 
-    for(i = 0; i < 4; i++)
+    for(i = 1; i <= ret[0]; i++)
     {
         printf("%d\n", *(ret[i]));
     }
