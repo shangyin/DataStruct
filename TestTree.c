@@ -1,7 +1,7 @@
 #include "Tree.h"
 
 
-int main(void)
+int TreeMain(void)
 {
     struct TreeNode tmp;
     
