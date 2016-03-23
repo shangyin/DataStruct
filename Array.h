@@ -1,14 +1,14 @@
-/************************************/
-/*		Xu XuTao	2016,3,1		*/
-/************************************/
+/*
+	Xu XuTao
+	create : 2016, 3, 1
+	modify : 2o16, 3, 23
+	note : well checked
+*/
+
 
 /*
- *	the length of array is set when its init.
- *  the variable length version may be built in the future.
- */
-
-/*
- * 	like python, offset == -1 means the last of array(maxSize + offset)
+	1. array will move up or move down when a slot is empty.
+  	2. like python, offset == -1 means the last of array(maxSize + offset)
  */
 
 /*

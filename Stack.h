@@ -2,6 +2,7 @@
 	Xu XuTao
 	create : unknown
 	modify : 2016.3.23 
+	note : well checked
 */
 
 #include <stdio.h>

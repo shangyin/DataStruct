@@ -1,6 +1,9 @@
-/********************************************/
-/*		Xu XuTao	2016,2,29				*/
-/********************************************/
+/*
+	Xu XuTao
+	create : 2016, 2, 29
+	modify : 2016, 3, 23
+	note : well checked
+*/
 
 /*	
  *	the stack only store the pointer of elements.
@@ -11,8 +14,11 @@
 
 void stack_init(struct Stack *arg, int maxSize)
 {
-    /* should check whether returns NULL */
     arg->base = malloc(maxSize*sizeof(void*));
+	if (!arg->base)
+	{
+		fprintf(stderr, "malloc returns NULL\n");
+	}
     arg->top = 0;
     arg->maxSize = maxSize;
 }
@@ -53,6 +59,8 @@ int stack_is_empty(struct Stack *arg)
     return !arg->top; 
 }
 
+/*
+what the hell is this?
 int main()
 {
     while (1)
@@ -60,3 +68,4 @@ int main()
         return 0;
     }
 }
+*/

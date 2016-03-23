@@ -1,31 +1,37 @@
+/*
+	Xu XuTao
+	create : unknown
+	modify : 2016, 3, 23
+	note : well checked. Hard code, should be checked again
+*/
 #include "Tree.h"
 
-void initBinaryTree(struct TreeNode *root, void **value, int num)
+void binary_tree_init(struct TreeNode *root, void **value, int num)
 {
 	struct Queue tQueue;
 	struct TreeNode **ret;
 	int count = 0;
 	
-	initQueue(&tQueue, num);
-	inQueue(&tQueue, &root);
-	while (!isEmptyQueue(&tQueue))
+	queue_init(&tQueue, num);
+	queue_in(&tQueue, &root);
+	while (!queue_is_empty(&tQueue))
 	{
 		if (count >= num)
 		{
 			break;
 		}
-		ret = deQueue(&tQueue);
+		ret = queue_out(&tQueue);
 		if (value[count])
 		{
 			*ret ? *ret : (*ret = (struct TreeNode*)malloc(sizeof(struct TreeNode)));
 			(*ret)->value = value[count];
 			(*ret)->left = (*ret)->right = NULL;
-			inQueue(&tQueue, &(*ret)->left);
-			inQueue(&tQueue, &(*ret)->right);
+			queue_in(&tQueue, &(*ret)->left);
+			queue_in(&tQueue, &(*ret)->right);
 		}
 		count++;
 	}
-	destroyQueue(&tQueue);
+	queue_destory(&tQueue);
 	
 }
 
@@ -51,7 +57,7 @@ static void traversal(struct TreeNode* root, void** tmp, int* count, int flag) {
 }
 
 /* return an array for the result */
-void** traversalTree(struct TreeNode * root, int flag) {
+void** binary_tree_traversal(struct TreeNode * root, int flag) {
 	void *tmp[4096] = { 0 };
 	int count = 0;
 	void **ret;

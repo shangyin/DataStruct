@@ -4,6 +4,10 @@
 	modify : 2016, 3, 23
 */
 
+/*	the queue only store the pointer of elements.
+	so, should NOT use the elements from the queue which has been free already.
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

@@ -1,27 +1,29 @@
-
-
-
-/*	the queue only store the pointer of elements.
-	so, should NOT use the elements from the queue which has been free already.
+/*
+	Xu XuTao
+	create : unknown
+	modify : 2016, 3, 23
+	note : well checked
 */
-
 
 #include "Queue.h"
 
-void initQueue(struct Queue *arg, int maxSize)
+void queue_init(struct Queue *arg, int maxSize)
 {
-    /* shoud check NULL */
     arg->base = malloc((maxSize+1)*sizeof(void*));
+	if (!arg->base)
+	{
+		fprintf(stderr, "malloc returns NULL\n");
+	}
     arg->head = arg->rear = 0;
     arg->maxSize = maxSize + 1;     /* left one for check */
 }
 
-int isEmptyQueue(struct Queue *arg)
+int queue_is_empty(struct Queue *arg)
 {
     return arg->head == arg->rear;
 }
 
-void inQueue(struct Queue *arg, void *element)
+void queue_in(struct Queue *arg, void *element)
 {
     if ((arg->head+1) % arg->maxSize == arg->rear)
     {
@@ -32,7 +34,7 @@ void inQueue(struct Queue *arg, void *element)
     arg->head = (arg->head + 1) % arg->maxSize;
 }
 
-void* deQueue(struct Queue *arg)
+void* queue_out(struct Queue *arg)
 {
     if (arg->head == arg->rear)
     {
@@ -44,7 +46,7 @@ void* deQueue(struct Queue *arg)
     return tmp;
 }
 
-void destroyQueue(struct Queue *arg)
+void queue_destory(struct Queue *arg)
 {
     free(arg->base);
 }

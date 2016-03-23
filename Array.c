@@ -1,39 +1,45 @@
-/************************************/
-/*		Xu XuTao	2016,3,1		*/
-/************************************/
+/*
+	Xu XuTao
+	create : 2016, 3, 1
+	modify : 2016, 3, 23
+	note : well checked
+*/
 
 /*
- *	the length of array is set when its init.
- *  the variable length version may be built in the future.
- */
-
-/*
- * 	like python, offset == -1 means the last of array(maxSize + offset)
- */
- 
+	the length of array is set when its init.
+	the variable length version may be built in the future.
+*/
 #include "Array.h"
 
-#define rightOffset(a,x) (x < 0 ? (((a->count+x)<0)?0:(a->count+x)) : x)
+/* 
+	to make negative index works.
+	when index is -1 and there has NO element, -1 should means 0.  
+*/
+#define rightOffset(a,index) (index < 0 ? (((a->count+index)<0)?0:(a->count+index)) : index)
 
 
-void initArray(struct Array *arg, int maxSize)
+void array_init(struct Array *arg, int maxSize)
 {
 	arg->count = 0;
 	arg->maxSize = maxSize;
 	arg->base = malloc(sizeof(void*) * maxSize);
+	if (!arg->base)
+	{
+		fprintf(stderr, "malloc returns NULL\n");
+	}
 }
 
-void InsertArrayRear(struct Array *arg, void *element)
+void array_insert_rear(struct Array *arg, void *element)
 {
-	addArrayByIndex(arg, element, arg->count);
+	array_add_by_index(arg, element, arg->count);
 }
 
-void InsertArrayHead(struct Array *arg, void *element)
+void array_insert_head(struct Array *arg, void *element)
 {
-	addArrayByIndex(arg, element, 0);
+	array_add_by_index(arg, element, 0);
 }
 
-void *getArrayByIndex(struct Array *arg, int offset)
+void *array_get_by_index(struct Array *arg, int offset)
 {
 	offset = rightOffset(arg, offset);
 	if(offset > arg->count-1)
@@ -44,28 +50,28 @@ void *getArrayByIndex(struct Array *arg, int offset)
 	return (arg->base)[offset];
 }
 
-void *getArrayHead(struct Array *arg)
+void *array_get_head(struct Array *arg)
 {
-	return getArrayByIndex(arg, 0);
+	return array_get_by_index(arg, 0);
 }
 
 
-void *getArrayRear(struct Array *arg)
+void *array_get_rear(struct Array *arg)
 {
-	return getArrayByIndex(arg, -1);
+	return array_get_by_index(arg, -1);
 }
 
-int getArrayLength(struct Array *arg)
+int array_get_length(struct Array *arg)
 {
 	return arg->count;
 }
 
-int getArrayMaxSize(struct Array *arg)
+int array_get_maxsize(struct Array *arg)
 {
 	return arg->maxSize;
 }
 
-void addArrayByIndex(struct Array *arg, void *element, int offset)
+void array_add_by_index(struct Array *arg, void *element, int offset)
 {
 	int temp;
 	
@@ -94,7 +100,7 @@ void addArrayByIndex(struct Array *arg, void *element, int offset)
 	arg->count += 1;
 }
 
-void removeArrayByIndex(struct Array *arg, int offset)
+void array_remove_by_index(struct Array *arg, int offset)
 {
 	int temp;
 	offset = rightOffset(arg,offset);
@@ -113,17 +119,17 @@ void removeArrayByIndex(struct Array *arg, int offset)
 	arg->count -= 1;
 }
 
-void removeArrayHead(struct Array *arg)
+void array_remove_head(struct Array *arg)
 {
-	removeArrayByIndex(arg, 0);
+	array_remove_by_index(arg, 0);
 }
 
-void removeArrayRear(struct Array *arg)
+void array_remove_rear(struct Array *arg)
 {
-	removeArrayByIndex(arg, -1);
+	array_remove_by_index(arg, -1);
 }
 
-void modifyArrayByIndex(struct Array *arg, void *element, int offset)
+void array_set_by_index(struct Array *arg, void *element, int offset)
 {
 	offset = rightOffset(arg, offset);
 	if (offset > arg->count - 1)
@@ -134,7 +140,7 @@ void modifyArrayByIndex(struct Array *arg, void *element, int offset)
 	(arg->base)[offset] = element;
 }
 
-int isArrayEmpty(struct Array *arg)
+int array_is_empty(struct Array *arg)
 {
 	return !arg->count;
 }
