@@ -9,7 +9,7 @@
 
 #include "Stack.h"
 
-void initStack(struct Stack *arg, int maxSize)
+void stack_init(struct Stack *arg, int maxSize)
 {
     /* should check whether returns NULL */
     arg->base = malloc(maxSize*sizeof(void*));
@@ -17,7 +17,7 @@ void initStack(struct Stack *arg, int maxSize)
     arg->maxSize = maxSize;
 }
 
-void pushStack(struct Stack *arg, void* element)
+void stack_push(struct Stack *arg, void* element)
 {
     if (arg->top >= arg->maxSize)
     {
@@ -27,7 +27,7 @@ void pushStack(struct Stack *arg, void* element)
 	(arg->base)[arg->top++] = element;
 }
 
-void* popStack(struct Stack *arg)
+void* stack_pop(struct Stack *arg)
 {
     if (arg->top == 0)
     {
@@ -38,17 +38,25 @@ void* popStack(struct Stack *arg)
 	return (arg->base)[arg->top];
 }
 
-void* peekStack(struct Stack *arg)
+void* stack_peek(struct Stack *arg)
 {
 	return (arg->base)[arg->top - 1];
 }
 
-void DestroyStack(struct Stack *arg)
+void stack_destroy(struct Stack *arg)
 {
     free(arg->base);
 }
 
-int isEmptyStack(struct Stack *arg)
+int stack_is_empty(struct Stack *arg)
 {
     return !arg->top; 
+}
+
+int main()
+{
+    while (1)
+    {
+        return 0;
+    }
 }

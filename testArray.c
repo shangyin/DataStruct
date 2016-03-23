@@ -10,29 +10,29 @@ int main(void)
 	int *ret3;
 	int *ret4;
 
-	initArray(&tmp, 128);
+	array_init(&tmp, 128);
 	
-	InsertArrayRear(&tmp, sum);
-	ret = getArrayHead(&tmp);
+	array_insert_rear(&tmp, sum);
+	ret = array_get_head(&tmp);
 	printf("%d(should be 1)\n", *ret);
 	
-	InsertArrayHead(&tmp, sum + 1);
-	InsertArrayRear(&tmp, sum + 2);
-	ret2 = getArrayRear(&tmp);
+	array_insert_head(&tmp, sum + 1);
+	array_insert_rear(&tmp, sum + 2);
+	ret2 = array_get_rear(&tmp);
 	printf("%d (should be 3)\n", *ret2);
 
-	modifyArrayByIndex(&tmp, sum + 3, 0);
-	ret3 = getArrayHead(&tmp);
+	array_set_by_index(&tmp, sum + 3, 0);
+	ret3 = array_get_head(&tmp);
 	printf("%d(should be 4)\n", *ret3);
 
-	removeArrayHead(&tmp);
-	printf("%d(should be 2)\n", getArrayLength(&tmp));
+	array_remove_head(&tmp);
+	printf("%d(should be 2)\n", array_get_length(&tmp));
 
-	while (!isArrayEmpty(&tmp))
+	while (!array_is_empty(&tmp))
 	{
-		ret4 = getArrayHead(&tmp);
+		ret4 = array_get_head(&tmp);
 		printf("%d ", *ret4);
-		removeArrayHead(&tmp);
+		array_remove_head(&tmp);
 	}
 	printf("(should be 1 3)\n");
 	return 0;

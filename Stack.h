@@ -1,6 +1,16 @@
+/*
+	Xu XuTao
+	create : unknown
+	modify : 2016.3.23 
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
+/*
+	STACK_H should be added
+*/
 
 struct Stack
 {
@@ -10,9 +20,9 @@ struct Stack
 };
 
 
-void initStack(struct Stack *arg, int maxSize);
-void pushStack(struct Stack *arg, void* element);
-void* popStack(struct Stack *arg);
-void* peekStack(struct Stack *arg);
-void DestroyStack(struct Stack *arg);
-int isEmptyStack(struct Stack *arg);
+void stack_init(struct Stack *arg, int maxSize);
+void stack_push(struct Stack *arg, void* element);
+void* stack_pop(struct Stack *arg);
+void* stack_peek(struct Stack *arg);
+void stack_destroy(struct Stack *arg);
+int stack_is_empty(struct Stack *arg);

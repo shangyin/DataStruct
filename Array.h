@@ -11,6 +11,10 @@
  * 	like python, offset == -1 means the last of array(maxSize + offset)
  */
 
+/*
+	ARRAY_H should be added.
+*/
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -23,21 +27,21 @@ struct Array
 };
 
 
-void initArray(struct Array *arg, int maxSize);
-int isArrayEmpty(struct Array *arg);
-int getArrayLength(struct Array *arg);
-int getArrayMaxSize(struct Array *arg);
+void array_init(struct Array *arg, int maxSize);
+int array_is_empty(struct Array *arg);
+int array_get_length(struct Array *arg);
+int array_get_maxsize(struct Array *arg);
 
-void addArrayByIndex(struct Array *arg, void *element, int offset);
-void InsertArrayRear(struct Array *arg, void *element);
-void InsertArrayHead(struct Array *arg, void *element);
+void array_add_by_index(struct Array *arg, void *element, int offset);
+void array_insert_rear(struct Array *arg, void *element);
+void array_insert_head(struct Array *arg, void *element);
 
-void *getArrayByIndex(struct Array *arg, int offset);
-void *getArrayHead(struct Array *arg);
-void *getArrayRear(struct Array *arg);
+void *array_get_by_index(struct Array *arg, int offset);
+void *array_get_head(struct Array *arg);
+void *array_get_rear(struct Array *arg);
 
-void modifyArrayByIndex(struct Array *arg, void *element, int offset);
+void array_set_by_index(struct Array *arg, void *element, int offset);
 
-void removeArrayByIndex(struct Array *arg, int offset);
-void removeArrayHead(struct Array *arg);
-void removeArrayRear(struct Array *arg);
+void array_remove_by_index(struct Array *arg, int offset);
+void array_remove_head(struct Array *arg);
+void array_remove_rear(struct Array *arg);
