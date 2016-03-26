@@ -1,14 +1,14 @@
 /*
 	Xu XuTao
 	create : unknown
-	modify : 2016, 3, 23
+	modify : 2016, 3, 26
 	note : well checked
 */
 
 #include "Stack.h"
 #include <stdio.h>
 
-int main(void)
+int StackMain(void)
 {
     int i;
     struct Stack sample;

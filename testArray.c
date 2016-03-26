@@ -1,14 +1,14 @@
 /*
 	Xu XuTao
 	create : unknown
-	modify : 2016, 3, 23
+	modify : 2016, 3, 26
 	note : well checked
 */
 
 #include <stdio.h>
 #include "Array.h"
 
-int main(void)
+int ArrayMain(void)
 {
 	int sum[] = { 1,2,3,4,5,6,7,8,9 };
 	struct Array tmp;

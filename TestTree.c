@@ -1,7 +1,7 @@
 /*
 	Xu XuTao
 	create : unknown
-	modify : 2016, 3, 23
+	modify : 2016, 3, 26
 	note : who wants to read this fucking code?
 */
 #include "Tree.h"
@@ -18,9 +18,9 @@ int TreeMain(void)
     int *array[3] = {&a, &b, &c}; 
     binary_tree_init(&tmp, (void**)array, 3);
     int **ret = (int**)binary_tree_traversal(&tmp, PRE); 
-    for(i = 1; i <= ret[0]; i++)
+    for(i = 1; i <= *ret[0]; i++)
     {
-        printf("%d\n", *(ret[i]));
+        printf("%d\n", *ret[i]);
     }
     return 0;
 }

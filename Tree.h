@@ -1,7 +1,7 @@
 /*
 	Xu XuTao
 	create : unknown
-	modify : 2016, 3, 23
+	modify : 2016, 3, 26
 */
 
 #include <stdio.h>
@@ -22,6 +22,8 @@ struct TreeNode {
 };
 
 
-
 void binary_tree_init(struct TreeNode *root, void **value, int num);
+
+/* return an array for the result */
+/* ret and ret[0] should be free */
 void** binary_tree_traversal(struct TreeNode * root, int flag); 

@@ -1,13 +1,13 @@
 /*
 	Xu XuTao
 	create : unknown
-	modify : 2016, 3, 23
+	modify : 2016, 3, 26
 	note : well checked
 */
 #include "Queue.h"
 #include <stdio.h>
 
-int main(void)
+int QueueMain(void)
 {
     struct Queue tmp;
     int i;

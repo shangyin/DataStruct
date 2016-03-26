@@ -1,7 +1,7 @@
 /*
 	Xu XuTao
 	create : unknown
-	modify : 2016, 3, 23
+	modify : 2016, 3, 26
 	note : well checked. Hard code, should be checked again
 */
 #include "Tree.h"
@@ -57,6 +57,7 @@ static void traversal(struct TreeNode* root, void** tmp, int* count, int flag) {
 }
 
 /* return an array for the result */
+/* ret and ret[0] should be free */
 void** binary_tree_traversal(struct TreeNode * root, int flag) {
 	void *tmp[4096] = { 0 };
 	int count = 0;
@@ -64,7 +65,8 @@ void** binary_tree_traversal(struct TreeNode * root, int flag) {
 
 	traversal(root, tmp, &count, flag);
 	ret = (void**)malloc((count + 1)*sizeof(void*));
-	ret[0] = count;			/* NOTE: works in IA-32 */
+	ret[0] = (int*)malloc(sizeof(int));
+	*(int*)ret[0] = count;
 	memcpy(ret+1, tmp, sizeof(void*)*count);
 	return ret;
 }
