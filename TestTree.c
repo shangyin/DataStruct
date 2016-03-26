@@ -9,7 +9,7 @@
 
 int TreeMain(void)
 {
-    struct TreeNode tmp;
+    struct TreeTable tmp;
     
     int a = 100;
     int b = 4;
@@ -17,7 +17,7 @@ int TreeMain(void)
     int i;
     int *array[3] = {&a, &b, &c}; 
     binary_tree_init(&tmp, (void**)array, 3);
-    int **ret = (int**)binary_tree_traversal(&tmp, PRE); 
+    int **ret = (int**)binary_tree_traversal(&tmp, PREORDER); 
     for(i = 1; i <= *ret[0]; i++)
     {
         printf("%d\n", *ret[i]);
